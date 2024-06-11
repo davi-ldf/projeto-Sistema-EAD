@@ -57,18 +57,21 @@ $num_cursos = $sql_query->num_rows;
                             <tbody>
                                 <?php if($num_cursos == 0) { ?>
                                     <tr>
-                                        <th scope="row">1</th>
                                         <td colspan="5">Nenhum curso foi cadastrado</td>
                                     </tr>
-                                    <?php } else { ?>
+                                    <?php } else {
+                                        while($curso = $sql_query->fetch_assoc()) {
+                                        ?>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
+                                        <th scope="row"><?php echo $curso['id'];?></th>
+                                        <td><img src="upload/<?php echo $curso['id'];?>" height="50" alt=""></img></td>
+                                        <td><?php echo $curso['titulo'];?></td>
+                                        <td>R$ <?php echo number_format($curso['preco'], 2, ',', '.');?></td>
+                                        <td><a href="index.php?p=editar_curso&id=<?php echo $curso['id'];?>">editar</a> | <a href="index.php?p=deletar_curso&id=<?php echo $curso['id'];?>">deletar</a></td>
                                     </tr>
-                                    <?php }?>
+                                    <?php }
+                                    
+                                    } ?>
                             </tbody>
                         </table>
                     </div>
