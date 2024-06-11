@@ -1,5 +1,8 @@
 <?php 
 include('lib/config.php');
+
+$sql_cursos = "SELECT * FROM cursos";
+$sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);
 ?>
 <!-- Page-header start -->
 <div class="page-header card">
