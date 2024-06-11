@@ -11,7 +11,7 @@ function enviarArquivo($error, $size, $name, $tmp_name) {
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
 
-    if($extensao != "jpg" && $extensao != "png")
+    if($extensao != "jpg" && $extensao != "png" && $extensao != "gif")
         die("Tipo de arquivo não aceito");
     
         $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
