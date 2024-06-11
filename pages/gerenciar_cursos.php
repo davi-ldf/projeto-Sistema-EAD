@@ -1,3 +1,6 @@
+<?php 
+include('lib/config.php');
+?>
 <!-- Page-header start -->
 <div class="page-header card">
     <div class="row align-items-end">
