@@ -1,6 +1,5 @@
 <?php 
 function enviarArquivo($error, $size, $name, $tmp_name) {
-    include("config.php");
 
     if($error)
         die("Falha ao enviar arquivo");
