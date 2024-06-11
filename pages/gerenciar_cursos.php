@@ -3,6 +3,8 @@ include('lib/config.php');
 
 $sql_cursos = "SELECT * FROM cursos";
 $sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);
+$num_cursos = $sql_query->num_rows;
+
 ?>
 <!-- Page-header start -->
 <div class="page-header card">
@@ -53,13 +55,20 @@ $sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
+                                <?php if($num_cursos == 0) { ?>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td colspan="5">Nenhum curso foi cadastrado</td>
+                                    </tr>
+                                    <?php } else { ?>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <?php }?>
                             </tbody>
                         </table>
                     </div>
