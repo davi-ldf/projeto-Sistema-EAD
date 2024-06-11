@@ -41,7 +41,7 @@ if(isset($_GET['p'])) {
 
 <body>
     <!-- Pre-loader start -->
-    <div class="theme-loader">
+    <div class="theme-load">
         <div class="ball-scale">
             <div class='contain'>
                 <div class="ring"><div class="frame"></div></div>
@@ -96,7 +96,8 @@ if(isset($_GET['p'])) {
                             <li class="header-notification">
                                 <a href="#!">
                                     <i class="ti-money"></i>
-                                    <span class="badge bg-c-pink"></span> 50,00
+                                    <!--
+                                    <span class="badge bg-c-pink"></span>--> 50,00
                                 </a>
                             <li class="user-profile header-notification">
                                 <a href="#!">

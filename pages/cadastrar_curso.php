@@ -1,10 +1,16 @@
 <?php
 include('lib/config.php');
+include('lib/enviarArquivo.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if(isset($_POST['enviar'])) {
-    $titulo = $_POST['titulo'];
-    $descricao_curta = $_POST['descricao_curta'];
-    $preco = $_POST['preco'];
-    $conteudo = $_POST['conteudo'];
+
+    $titulo = $mysqli->escape_string($_POST['titulo']);
+    $descricao_curta = $mysqli->escape_string($_POST['descricao_curta']);
+    $preco = $mysqli->escape_string($_POST['preco']);
+    $conteudo = $mysqli->escape_string($_POST['conteudo']);
 
     $erro = array();
     if(empty($titulo))
@@ -19,10 +25,33 @@ if(isset($_POST['enviar'])) {
     if(empty($conteudo)) 
         $erro[] = "Preencha o conteúdo";
 
-    if(!isset($_FILES) || !isset($_FILES['imagem']) || $_FILES['size'] == 0)
+    if(!isset($_FILES['imagem']) || !isset($_FILES) || $_FILES['imagem']['size'] == 0)
         $erro[] = "Selecione uma imagem para o conteúdo";
-    
+
     if(count($erro) == 0) {
+
+        $deu_certo = enviarArquivo($_FILES['imagem']['error'], $_FILES['imagem']['size'], $_FILES['imagem']['name'], $_FILES['imagem']['tmp_name']);
+        if($deu_certo !== false) {
+
+            $sql_code = "INSERT INTO cursos (titulo, descricao_curta, conteudo, data_cadastro, preco, imagem) VALUES (
+                '$titulo',
+                '$descricao_curta',
+                '$conteudo',
+                NOW(),
+                '$preco',
+                '$deu_certo'
+            )";
+            $inserido = $mysqli->query($sql_code);
+            if(!$inserido)
+                $erro[] = "Falha ao inserir no banco de dados: " . $mysqli->error;
+            else
+                ?>
+                <p>Arquivo enviado com sucesso!</p>
+                <a href="index.php">Clique aqui</a> para voltar
+                <?php
+
+        } else
+            $erro[] = "Falha ao enviar a imagem";
 
     }
 
