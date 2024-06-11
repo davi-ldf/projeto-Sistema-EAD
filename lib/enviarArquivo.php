@@ -17,10 +17,6 @@ function enviarArquivo($error, $size, $name, $tmp_name) {
     
         $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
         $deu_certo = move_uploaded_file($tmp_name, $path);
-        if($deu_certo) {
-            $mysqli->query("INSERT INTO arquivos (nome, path) VALUES ('$nomeDoArquivo', '$path')") or die($mysqli->error);
-            return true;
-        } else
-            return false;
+        return $deu_certo;
 }
 ?>
