@@ -140,7 +140,7 @@ if(isset($_POST['enviar'])) {
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <a href="index.php" class="btn btn-primary btn-round"> <i class="ti-arrow-left"></i>Voltar</a>
+                                <a href="index.php?p=gerenciar_cursos" class="btn btn-primary btn-round"> <i class="ti-arrow-left"></i>Voltar</a>
                                 <button type="submit" name="enviar" class="btn btn-success btn-round float-right"> <i class="ti-save"></i>Salvar</button>
                             </div>
                         </div>
