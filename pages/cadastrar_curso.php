@@ -78,6 +78,11 @@ if(isset($_POST['enviar'])) {
                             <i class="icofont icofont-home"></i>
                         </a>
                     </li>
+                    <li class="breadcrumb-item">
+                        <a href="index.php?p=gerenciar_cursos">
+                            Gerenciar Cursos
+                        </a>
+                    </li>
                     <li class="breadcrumb-item"><a href="#!">Cadastrar Curso</a>
                     </li>
                 </ul>
