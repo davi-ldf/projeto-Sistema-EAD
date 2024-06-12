@@ -3,6 +3,7 @@ include('lib/config.php');
 if(isset($_GET['id'])) {
     $id = intval($_GET['id']);
     $sql_cursos = "SELECT * FROM cursos WHERE id = '$id'";
+    //search course
     $sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);
     $num_cursos = $sql_query->num_rows;
 
@@ -10,12 +11,15 @@ if(isset($_GET['id'])) {
     if(isset($_POST['confirmar'])) {
         $mysql_query = $mysqli->query("SELECT imagem FROM cursos WHERE id = '$id'") or die($mysqli->error);
         $curso = $mysql_query->fetch_assoc();
+        //search image
         if(unlink($curso['imagem'])) {
+        //delete image
             $sql_code = "DELETE FROM cursos WHERE id = '$id'";
             $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
-
+            //delete course
             if($sql_query) {
                 die("<script>location.href=\"index.php?p=gerenciar_cursos\";</script>");
+                //return to courses page
             }
         }
     }
