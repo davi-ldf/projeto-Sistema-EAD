@@ -6,13 +6,17 @@ if(isset($_GET['id'])) {
     $sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);
     $num_cursos = $sql_query->num_rows;
 
-    if(isset($_POST['confirmar'])) {
-        
-        $sql_code = "DELETE FROM cursos WHERE id = '$id'";
-        $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
 
-        if($sql_query) {
-            die("<script>location.href=\"index.php?p=gerenciar_cursos\";</script>");
+    if(isset($_POST['confirmar'])) {
+        $mysql_query = $mysqli->query("SELECT imagem FROM cursos WHERE id = '$id'") or die($mysqli->error);
+        $curso = $mysql_query->fetch_assoc();
+        if(unlink($curso['imagem'])) {
+            $sql_code = "DELETE FROM cursos WHERE id = '$id'";
+            $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
+
+            if($sql_query) {
+                die("<script>location.href=\"index.php?p=gerenciar_cursos\";</script>");
+            }
         }
     }
 } else {
