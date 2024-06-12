@@ -1,9 +1,8 @@
 <?php
 include('lib/config.php');
 include('lib/enviarArquivo.php');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
+$id = intval($_GET['id']);
 
 if(isset($_POST['enviar'])) {
 
@@ -25,30 +24,37 @@ if(isset($_POST['enviar'])) {
     if(empty($conteudo)) 
         $erro[] = "Preencha o conteúdo";
 
-    if(!isset($_FILES['imagem']) || !isset($_FILES) || $_FILES['imagem']['size'] == 0)
-        $erro[] = "Selecione uma imagem para o conteúdo";
-
     if(count($erro) == 0) {
-
-        $deu_certo = enviarArquivo($_FILES['imagem']['error'], $_FILES['imagem']['size'], $_FILES['imagem']['name'], $_FILES['imagem']['tmp_name']);
+        $imagemAlterada = false;
+        if(isset($_FILES['imagem']) && isset($_FILES['imagem']['size']) && $_FILES['imagem']['size'] > 0) {
+            $deu_certo = enviarArquivo($_FILES['imagem']['error'], $_FILES['imagem']['size'], $_FILES['imagem']['name'], $_FILES['imagem']['tmp_name']);
+            $imagemAlterada = true;
+        } else {
+            $deu_certo = true;
+        }
         if($deu_certo !== false) {
 
-            $sql_code = "INSERT INTO cursos (titulo, descricao_curta, conteudo, data_cadastro, preco, imagem) VALUES (
-                '$titulo',
-                '$descricao_curta',
-                '$conteudo',
-                NOW(),
-                '$preco',
-                '$deu_certo'
-            )";
+            if($imagemAlterada)
+                $sql_code = "UPDATE cursos SET
+                    titulo = '$titulo',
+                    descricao_curta = '$descricao_curta',
+                    conteudo = '$conteudo',
+                    preco = '$preco',
+                    imagem = '$deu_certo'
+                WHERE id = '$id'";
+            else
+                $sql_code = "UPDATE cursos SET
+                titulo = '$titulo',
+                descricao_curta = '$descricao_curta',
+                conteudo = '$conteudo',
+                preco = '$preco'
+            WHERE id = '$id'";
+
             $inserido = $mysqli->query($sql_code);
             if(!$inserido)
                 $erro[] = "Falha ao inserir no banco de dados: " . $mysqli->error;
             else
-                ?>
-                <p>Arquivo enviado com sucesso!</p>
-                <a href="index.php">Clique aqui</a> para voltar
-                <?php
+                die("<script>location.href=\"index.php?p=gerenciar_cursos\";</script>");
 
         } else
             $erro[] = "Falha ao enviar a imagem";
@@ -58,7 +64,6 @@ if(isset($_POST['enviar'])) {
     
 }
 
-$id = intval($_GET['id']);
 $sql_query = $mysqli->query("SELECT * FROM cursos WHERE id = '$id'") or die($mysqli->error);
 $curso = $sql_query->fetch_assoc();
 
@@ -144,8 +149,8 @@ $curso = $sql_query->fetch_assoc();
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <a href="index.php" class="btn btn-primary btn-round"> <i class="ti-arrow-left"></i>Voltar</a>
-                                <button type="submit" name="enviar" class="btn btn-success btn-round float-right"> <i class="ti-save"></i>Salvar</button>
+                                <a href="index.php?p=gerenciar_cursos" class="btn btn-primary btn-round"> <i class="ti-arrow-left"></i>Voltar</a>
+                                <a href="index.php?p=gerenciar_cursos"><button type="submit" name="enviar" class="btn btn-success btn-round float-right"> <i class="ti-save"></i>Salvar</button></a>
                             </div>
                         </div>
                     </form>

@@ -47,7 +47,7 @@ if(isset($_POST['enviar'])) {
             else
                 ?>
                 <p>Arquivo enviado com sucesso!</p>
-                <a href="index.php">Clique aqui</a> para voltar
+                <a href="index.php?p=gerenciar_cursos">Clique aqui</a> para voltar
                 <?php
 
         } else
