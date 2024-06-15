@@ -12,6 +12,7 @@ if(isset($_POST['enviar'])) {
     $creditos = $mysqli->escape_string($_POST['creditos']);
     $senha = $mysqli->escape_string($_POST['senha']);
     $rsenha = $mysqli->escape_string($_POST['rsenha']);
+    $admin = $mysqli->escape_string($_POST['admin']);
 
     $erro = array();
     if(empty($nome))
@@ -31,12 +32,13 @@ if(isset($_POST['enviar'])) {
 
     if(count($erro) == 0) {
         $senha = password_hash($senha, PASSWORD_DEFAULT);
-        $mysqli->query("INSERT INTO usuarios (nome, email, senha, data_cadastro, creditos) VALUES(
+        $mysqli->query("INSERT INTO usuarios (nome, email, senha, data_cadastro, creditos, admin) VALUES(
             '$nome',
             '$email',
             '$senha',
             NOW(),
-            '$creditos'
+            '$creditos',
+            '$admin'
         )");
         ?>
         <h1>Usuário cadastrado com sucesso!</h1>
@@ -128,6 +130,15 @@ if(isset($_POST['enviar'])) {
                                 <div class="form-group">
                                     <label for="">Repita a senha</label>
                                     <input class="form-control" name="rsenha" type="password">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Tipo</label>
+                                    <select name="admin" class="form-control">
+                                        <option value="0">Usuário</option>
+                                        <option value="1">Admin</option>
+                                    </select>
                                 </div>
                             </div>
 
