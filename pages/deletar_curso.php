@@ -1,5 +1,11 @@
 <?php 
 include('lib/config.php');
+include('lib/protect.php');
+protect(1);
+//'0' means normal users can access
+//'1' means only adm can access
+
+
 if(isset($_GET['id'])) {
     $id = intval($_GET['id']);
     $sql_cursos = "SELECT * FROM cursos WHERE id = '$id'";

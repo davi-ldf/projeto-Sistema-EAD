@@ -1,5 +1,9 @@
 <?php 
 include('lib/config.php');
+include('lib/protect.php');
+protect(1);
+//'0' means normal users can access
+//'1' means only adm can access
 
 $sql_relatorios = "SELECT r.id, u.nome, c.titulo, r.valor, r.data_compra FROM relatorio r JOIN usuarios u ON u.id = r.id_usuario JOIN cursos c ON c.id = r.id_curso";
 $sql_query = $mysqli->query($sql_relatorios) or die($mysqli->error);

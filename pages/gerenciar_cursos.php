@@ -1,5 +1,9 @@
 <?php 
 include('lib/config.php');
+include('lib/protect.php');
+protect(1);
+//'0' means normal users can access
+//'1' means only adm can access
 
 $sql_cursos = "SELECT * FROM cursos";
 $sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);

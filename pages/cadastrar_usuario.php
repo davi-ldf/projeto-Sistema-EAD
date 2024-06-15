@@ -1,9 +1,10 @@
 <?php
 include('lib/config.php');
 include('lib/enviarArquivo.php');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+include('lib/protect.php');
+protect(1);
+//'0' means normal users can access
+//'1' means only adm can access
 
 if(isset($_POST['enviar'])) {
 
