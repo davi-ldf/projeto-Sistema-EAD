@@ -9,7 +9,6 @@ if(isset($_GET['id'])) {
 
 
     if(isset($_POST['confirmar'])) {
-        //delete image
             $sql_code = "DELETE FROM usuarios WHERE id = '$id'";
             $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
             //delete user
