@@ -1,3 +1,13 @@
+<?php 
+
+protect(0);
+
+if(!isset($_SESSION))
+    session_start();
+
+$id_usuario = $_SESSION['usuario'];
+$cursos_query = $mysqli->query("SELECT * FROM cursos WHERE id IN (SELECT id_curso FROM relatorio WHERE id_usuario = '$id_usuario')") or die($mysqli->error);
+?>
 <!-- Page-header start -->
 <div class="page-header card">
     <div class="row align-items-end">
@@ -28,19 +38,25 @@
 
 <div class="page-body">
     <div class="row">
+        <?php while($curso = $cursos_query->fetch_assoc()) {?>
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">
-                    <h5>Página Incial</h5>
+                    <h5><?php echo htmlspecialchars($curso['titulo']); ?></h5>
                 </div>
                 <div class="card-block">
-                    <img src="https://cdn.falauniversidades.com.br/wp-content/uploads/2020/04/02122231/ead-1.jpg" class="img-fluid mb-3" alt="">
+                    <img src="<?php echo htmlspecialchars($curso['imagem']); ?>" class="img-fluid mb-3" alt="">
                     <p>
-                        Aqui na plataforma EAD da Harvard University, são ofertados uma diversidade de cursos online acessíveis, práticos e completos para nossos usuários.
+                    <?php echo $curso['descricao_curta']; ?>
                     </p>
-                    <butto class="btn form-control btn-out-dashed btn-primary btn-square">Assistir</button>
+                    <form action="index.php">
+                        <input type="hidden" name="p" value="acessar">
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($curso['id']); ?>">
+                        <button type="submit" class="btn form-control btn-out-dashed btn-primary btn-square">Acessar</button>
+                    </form>
                 </div>
             </div>
         </div>
+        <?php }?>
     </div>
 </div>

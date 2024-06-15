@@ -149,12 +149,13 @@ $curso = $sql_query->fetch_assoc();
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="">Conteúdo</label>
-                                    <textarea class="form-control" rows="10" name="conteudo">value="<?php echo $curso['conteudo']?>"</textarea>
+                                    <textarea class="form-control" rows="10" name="conteudo"><?php echo $curso['conteudo']; ?></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <a href="index.php?p=gerenciar_cursos" class="btn btn-primary btn-round"> <i class="ti-arrow-left"></i>Voltar</a>
-                                <a href="index.php?p=gerenciar_cursos"><button type="submit" name="enviar" class="btn btn-success btn-round float-right"> <i class="ti-save"></i>Salvar</button></a>
+
+                                <<button type="submit" name="enviar" value="1" class="btn btn-success btn-round float-right"> <i class="ti-save"></i>Salvar</button>
                             </div>
                         </div>
                     </form>
