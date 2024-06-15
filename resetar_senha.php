@@ -1,3 +1,27 @@
+<?php 
+
+$msg = false;
+if(isset($_POST['email'])) {
+    include('lib/config.php');
+    include('lib/generateRandomString.php');
+    $email = $mysqli->escape_string($_POST['email']);
+    $sql_query = $mysqli->query("SELECT id FROM usuarios WHERE email = '$email'");
+    $result = $sql_query->fetch_assoc();
+
+    if($result['id']) {
+
+        $nova_senha = generateRandomString(6);
+        $nova_senha_criptografada = password_hash($nova_senha, PASSWORD_DEFAULT);
+        $id_usuario = $result['$id'];
+        $mysqli->query("UPDATE usuarios SET senha = '$nova_senha_criptografada' WHERE id = '$id_usuario'");
+
+        $msg = "Se o seu email existir no banco de dados, uma nova senha será enviada para ele.";
+    } else {
+        $msg = "Se o seu email existir no banco de dados, uma nova senha será enviada para ele.";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +81,7 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     <div class="login-card card-block auth-body mr-auto ml-auto">
-                        <form class="md-float-material">
+                        <form method="post" class="md-float-material">
                             <div class="text-center">
                                 <img height="70" src="assets/images/logo3.png" alt="logo.png">
                             </div>
@@ -80,7 +104,7 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Recuperar Senha</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Recuperar Senha</button>
                                     </div>
                                 </div>
                             </div>
