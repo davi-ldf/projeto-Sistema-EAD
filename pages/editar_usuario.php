@@ -1,10 +1,8 @@
 <?php
 include('lib/config.php');
 include('lib/enviarArquivo.php');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
+$id = intval($_GET['id']);
 if(isset($_POST['enviar'])) {
 
     $nome = $mysqli->escape_string($_POST['nome']);
@@ -23,31 +21,38 @@ if(isset($_POST['enviar'])) {
     if(empty($creditos)) 
         $creditos = 0;
 
-    if(empty($senha)) 
-        $erro[] = "Preencha a senha";
-
     if($rsenha != $senha) 
         $erro[] = "As senhas não batem";
 
     if(count($erro) == 0) {
-        $senha = password_hash($senha, PASSWORD_DEFAULT);
-        $mysqli->query("INSERT INTO usuarios (nome, email, senha, data_cadastro, creditos) VALUES(
-            '$nome',
-            '$email',
-            '$senha',
-            NOW(),
-            '$creditos'
-        )");
+
+        $sql_code = "UPDATE usuarios
+        SET nome = '$nome',
+        email = '$email'
+        WHERE id = '$id'";
+        
+        if(!empty($senha)) {
+            $senha = password_hash($senha, PASSWORD_DEFAULT);
+            $sql_code = "UPDATE usuarios
+            SET nome = '$nome',
+            email = '$email',
+            senha = '$senha'
+            WHERE id = '$id'";
+
+        }
+
+        $mysqli->query($sql_code) or die($mysqli->error);
         ?>
-        <h1>Usuário cadastrado com sucesso!</h1>
+        <h1>Usuário atualizado com sucesso!</h1>
         <a href="index.php?p=gerenciar_usuarios">Clique aqui</a> para voltar
         <?php
 
 
     }
-
     
 }
+$sql_query = $mysqli->query("SELECT * FROM usuarios WHERE id = '$id'") or die($mysqli->error);
+$usuario = $sql_query->fetch_assoc();
 
 ?>
 <!-- Page-header start -->
@@ -103,19 +108,19 @@ if(isset($_POST['enviar'])) {
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Nome</label>
-                                    <input class="form-control" name="nome" type="text">
+                                    <input class="form-control" name="nome" type="text" value="<?php echo $usuario['nome']; ?>">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">E-mail</label>
-                                    <input class="form-control" name="email" type="email">
+                                    <input class="form-control" name="email" type="email" value="<?php echo $usuario['email']; ?>">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Créditos</label>
-                                    <input class="form-control" name="creditos" type="text">
+                                    <input class="form-control" name="creditos" type="text" value="<?php echo $usuario['creditos']; ?>">
                                 </div>
                             </div>
                             <div class="col-lg-4">
