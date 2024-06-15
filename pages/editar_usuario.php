@@ -145,7 +145,7 @@ $usuario = $sql_query->fetch_assoc();
                                     <label for="">Tipo</label>
                                     <select name="admin" class="form-control">
                                         <option value="0">Usuário</option>
-                                        <option value="1">Admin</option>
+                                        <option <?php if($usuario['admin']) echo 'selected'; ?> value="1">Admin</option>
                                     </select>
                                 </div>
                             </div>
