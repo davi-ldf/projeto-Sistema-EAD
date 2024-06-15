@@ -48,7 +48,7 @@ $num_usuarios = $sql_query->num_rows;
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nome/th>
+                                    <th>Nome</th>
                                     <th>Email</th>
                                     <th>Créditos</th>
                                     <th>Data de cadastro</th>
