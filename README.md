@@ -10,13 +10,13 @@ This project is an E-learning (EAD) system developed using PHP and MySQL. It pro
 - Mysqli extension enabled.
 
 ##Features
-- `Admin Panel`
-Add, edit, and delete users and courses.
-Access detailed reports of all transactions made within the platform.
+### Admin Panel
+- Add, edit, and delete users and courses.
+- Access detailed reports of all transactions made within the platform.
 
-- `Client Panel`
-View, acquire, and watch courses.
-Spend balance provided by the administrator or directly via a database management platform like phpMyAdmin.
+### Client Panel
+- View, acquire, and watch courses.
+- Spend balance provided by the administrator or directly via a database management platform like phpMyAdmin.
 
 
 ## Setup
@@ -43,11 +43,11 @@ $db_pass = 'your_password';
 
 ### Usage
 
-`Admin Login`
+### Admin Login
 - Username: admin@admin.com
 - Password: 123456
   
-`Client Login`
+### Client Login
 - Username: user@user.com
 - Password: 123456
   
@@ -79,13 +79,13 @@ Este projeto é um sistema de EAD (E-learning) desenvolvido usando PHP e MySQL. 
 
 ## Funcionalidades
 
-- `Painel do Admin`
-Adicionar, editar e deletar usuários e cursos.
-Acessar relatórios detalhados de todas as transações realizadas na plataforma.
+### Painel do Admin
+- Adicionar, editar e deletar usuários e cursos.
+- Acessar relatórios detalhados de todas as transações realizadas na plataforma.
 
-- `Painel do Cliente`
-Visualizar, adquirir e assistir aos cursos.
-Gastar saldo fornecido pelo administrador ou diretamente via uma plataforma de gerenciamento de banco de dados, como phpMyAdmin.
+### Painel do Cliente
+- Visualizar, adquirir e assistir aos cursos.
+- Gastar saldo fornecido pelo administrador ou diretamente via uma plataforma de gerenciamento de banco de dados, como phpMyAdmin.
 
 
 ## Instalação
@@ -112,11 +112,11 @@ $db_pass = 'sua_senha';
 
 ## Uso
 
-`Login do Administrador`
+### Login do Administrador
 - Usuário: admin@admin.com
 - Senha: 123456
 
-`Login do Cliente`
+### Login do Cliente
 - Usuário: user@user.com
 - Senha: 123456
 
