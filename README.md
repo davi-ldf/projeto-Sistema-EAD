@@ -18,6 +18,9 @@ This project is an Distance Learning system developed using PHP and MySQL. It pr
 - View, acquire, and watch courses.
 - Spend balance provided by the administrator or directly via a database management platform like phpMyAdmin.
 
+### Password Recovery
+- On the login screen, there is a "Forgot your password?" button through which you can request an email with a new password.
+
 
 ## Setup
 
@@ -87,6 +90,9 @@ Este projeto é um sistema de EAD (E-learning) desenvolvido usando PHP e MySQL. 
 ### Painel do Cliente
 - Visualizar, adquirir e assistir aos cursos.
 - Gastar saldo fornecido pelo administrador ou diretamente via uma plataforma de gerenciamento de banco de dados, como phpMyAdmin.
+
+### Recuperação de Senha
+- Na tela de login, há um botão "Esqueceu sua senha?" pelo qual você pode solicitar um email com uma nova senha.
 
 
 ## Instalação
