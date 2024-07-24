@@ -51,8 +51,8 @@ $num_relatorios = $sql_query->num_rows;
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Usuário</th>
+                                    <th>Nome</th>
                                     <th>Curso</th>
                                     <th>Valor</th>
                                     <th>Data</th>
@@ -68,7 +68,6 @@ $num_relatorios = $sql_query->num_rows;
                                         ?>
                                     <tr>
                                         <th scope="row"><?php echo $relatorio['id'];?></th>
-                                        <td><?php echo $relatorio['id'];?></td>
                                         <td><?php echo $relatorio['nome'];?></td>
                                         <td><?php echo $relatorio['titulo'];?></td>
                                         <td>R$ <?php echo number_format($relatorio['valor'], 2, ',', '.');?></td>

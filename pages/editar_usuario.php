@@ -35,7 +35,7 @@ if(isset($_POST['enviar'])) {
         SET nome = '$nome',
         email = '$email',
         creditos = '$creditos',
-        admin = '$admin',
+        admin = '$admin'
         WHERE id = '$id'";
         
         if(!empty($senha)) {
@@ -45,7 +45,7 @@ if(isset($_POST['enviar'])) {
             email = '$email',
             senha = '$senha',
             creditos = '$creditos',
-            admin = '$admin',
+            admin = '$admin'
             WHERE id = '$id'";
 
         }
