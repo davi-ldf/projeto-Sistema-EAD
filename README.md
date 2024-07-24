@@ -10,7 +10,7 @@ This project is an Distance Learning system developed using PHP and MySQL. It pr
 - MySQL database
 - Mysqli extension enabled.
 
-##Features
+## Features
 ### Admin Panel
 - Add, edit, and delete users and courses.
 - Access detailed reports of all transactions made within the platform.
