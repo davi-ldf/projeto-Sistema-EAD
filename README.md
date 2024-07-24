@@ -35,7 +35,7 @@ This project is an E-learning (EAD) system developed using PHP and MySQL. It pro
 ```php
 <?php
 $db_host = 'your_host_name';
-$db_name = 'notecore';
+$db_name = 'escola_ead';
 $db_user = 'your_user';
 $db_pass = 'your_password';
 
@@ -104,7 +104,7 @@ Este projeto é um sistema de EAD (E-learning) desenvolvido usando PHP e MySQL. 
 
 <?php
 $db_host = 'seu_host';
-$db_name = 'notecore';
+$db_name = 'escola_ead';
 $db_user = 'seu_usuario';
 $db_pass = 'sua_senha';
 
