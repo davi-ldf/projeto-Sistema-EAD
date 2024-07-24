@@ -65,8 +65,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ____________________________________________________________________________________________________________________________________________________________________________________________________________________
 
+### Readme em pt-br
 
-#Sistema de EAD em PHP
+# Sistema de EAD em PHP
 
 Este projeto é um sistema de EAD (E-learning) desenvolvido usando PHP e MySQL. Ele fornece uma plataforma para administradores gerenciarem usuários e cursos, e para clientes acessarem e consumirem conteúdo educacional.
 
