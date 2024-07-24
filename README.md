@@ -41,7 +41,7 @@ $db_pass = 'your_password';
 
 ```
 
-### Usage
+## Usage
 
 ### Admin Login
 - Username: admin@admin.com
