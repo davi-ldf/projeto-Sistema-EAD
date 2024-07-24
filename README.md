@@ -1,6 +1,6 @@
 # Distance Learning System in PHP
 
-This project is an E-learning (EAD) system developed using PHP and MySQL. It provides a platform for administrators to manage users and courses, and for clients to access and consume educational content.
+This project is an Distance Learning system developed using PHP and MySQL. It provides a platform for administrators to manage users and courses, and for clients to access and consume educational content.
 
 ## Requirements
 
